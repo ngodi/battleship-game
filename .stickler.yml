@@ -1,0 +1,16 @@
+linters:
+    flake8:
+    eslint:
+        config: './eslint.config'
+        fixer: true
+    csslint:
+fixers:
+    enable: true
+
+files:
+    ignore:
+        - 'webroot/bower_components/*'
+        - 'node_modules/*' 
+        - 'no-unused-expressions'
+        - 'box-model'
+        - 'dist/main.js'
