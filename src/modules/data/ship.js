@@ -1,4 +1,4 @@
-const ShipFactory = (len) => {
+const ShipFactory = (len,cha) => {
   const hitPos = [];
   const hit = (position) => hitPos.push(position);
   const isSunk = () => hitPos.length >= len;
