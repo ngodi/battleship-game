@@ -3,7 +3,7 @@ const ShipFactory = (len,cha) => {
   const hit = (position) => hitPos.push(position);
   const isSunk = () => hitPos.length >= len;
 
-return { len, isSunk, hit};
+return { len, isSunk, hit, cha};
 };
 
 export default ShipFactory

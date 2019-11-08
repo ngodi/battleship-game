@@ -1,5 +1,7 @@
 import ShipFactory from './ship';
 
+const Gameboard = () => {
+    
 const board =  new Array(10).fill(null).map(() => new Array(10).fill(10));
 
 const validatePlacement = (ship, row, col, direction) => {
@@ -35,5 +37,6 @@ const placeShip = (ship, row, col, direction) => {
      }
   }
 };
-
-export { board, validatePlacement, placeShip}
+return { board, validatePlacement, placeShip };
+};
+export default Gameboard
