@@ -1,4 +1,4 @@
-const shipFactory = (len) => {
+const ShipFactory = (len) => {
   const hitPos = [];
   const hit = (position) => hitPos.push(position);
   const isSunk = () => hitPos.length >= len;
@@ -6,4 +6,4 @@ const shipFactory = (len) => {
 return { len, isSunk, hit};
 };
 
-export default shipFactory
+export default ShipFactory
