@@ -6,13 +6,13 @@ const validatePlacement = (ship, row, col, direction) => {
     const len = ship.len;
     if(direction == 'd'){
          for(let i = 0; i < len; i++){
-            if(board[row + i][col] == undefined || board[row +i][col] != null){
+            if(board[row + i][col] == undefined && board[row +i][col] != null){
                 return false;
             }
        }
     }else if(direction == 'r'){
         for(let i = 0; i < len; i++){
-            if(board[row][col + i] == undefined || board[row][col + i] != null){
+            if(board[row][col + i] == undefined && board[row][col + i] != null){
                 return false;
             }
        }
@@ -36,3 +36,4 @@ const placeShip = (ship, row, col, direction) => {
   }
 };
 
+export { board, validatePlacement, placeShip}
