@@ -3,6 +3,7 @@ import ShipFactory from './ship';
 const Gameboard = () => {
     
 const board =  new Array(10).fill(null).map(() => new Array(10).fill(10));
+const boardO =  new Array(10).fill(null).map(() => new Array(10).fill(10));
 
 const validatePlacement = (ship, row, col, direction) => {
     const len = ship.len;
@@ -21,7 +22,11 @@ const validatePlacement = (ship, row, col, direction) => {
     }
    return true;
 };
-
+const findShip = () => {
+    ships.filter(ship =>{
+        return board[row][col] == ship.cha
+    }).map(e => {e.cha});
+};
 const placeShip = (ship, row, col, direction) => {
     const len = ship.len
     const cha = ship.cha
@@ -37,6 +42,15 @@ const placeShip = (ship, row, col, direction) => {
      }
   }
 };
-return { board, validatePlacement, placeShip };
+const receiveAttack = (row, col) => {
+  if(board[row][col] == null || board[row][col] == undefined){
+      return false;
+  }else if(boardO[row][col] != null){
+      return 'hit already';
+  }else{
+   findShip();
+}
+};
+return { board, boardO, validatePlacement, placeShip, receiveAttack };
 };
 export default Gameboard
