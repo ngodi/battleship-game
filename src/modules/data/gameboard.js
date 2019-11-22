@@ -25,9 +25,9 @@ const validatePlacement = (ship, row, col, direction) => {
 const findShip = () => {
     ships.filter(ship =>{
         return board[row][col] == ship.cha
-    }).map(e => {e.cha});
+    });
 };
-const placeShip = (ship, row, col, direction) => {
+const placeShip = (ship, row, col, dir) => {
     const len = ship.len
     const cha = ship.cha
         // board[row + len-1][col]
@@ -44,11 +44,14 @@ const placeShip = (ship, row, col, direction) => {
 };
 const receiveAttack = (row, col) => {
   if(board[row][col] == null || board[row][col] == undefined){
-      return false;
+    board[row][col] = 'x';
+    boardO[row][col] = 'x';
   }else if(boardO[row][col] != null){
       return 'hit already';
   }else{
-   findShip();
+   let ship = findShip();
+   let position = ship.indexOf(board[row][col]);
+   ship.hit(position);
 }
 };
 return { board, boardO, validatePlacement, placeShip, receiveAttack };
