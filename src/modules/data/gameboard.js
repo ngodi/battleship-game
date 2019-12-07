@@ -54,6 +54,13 @@ const receiveAttack = (row, col) => {
    ship.hit(position);
 }
 };
-return { board, boardO, validatePlacement, placeShip, receiveAttack };
+
+const allSunk = (ships) => {
+return  ships.every(ship => ship.isSunk());
+};
+
+
+
+return { board, boardO, validatePlacement, placeShip, receiveAttack, allSunk };
 };
 export default Gameboard
