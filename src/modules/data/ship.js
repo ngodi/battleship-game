@@ -1,9 +1,9 @@
-const ShipFactory = (len,cha) => {
-  const hitPos = [];
-  const hit = (position) => hitPos.push(position);
-  const isSunk = () => hitPos.length >= len;
+const ShipFactory = (len, cha) => {
+  const hitPos = new Array(len).fill(cha);
+  const hit = (position) => hitPos[position] = 'X';
+  const isSunk = () => hitPos.every(e => e == 'X');
 
-return { len, isSunk, hit, cha};
+return { len, isSunk, hit, cha };
 };
 
 export default ShipFactory

@@ -3,6 +3,6 @@ import ShipFactory from '../src/modules/data/ship';
 
 test('returns false if board position is invalid', ()=>{
  const carrier = ShipFactory(5,'c');
- const game = Gameboard();
- expect(game.validatePlacement(carrier, 0, 0, 'd')).toBe(true);
+ const playerStorage = new Array(100).fill(null);
+ expect(Gameboard.validatePlacement(carrier, 0, playerStorage, 'down')).toBe(true);
 });

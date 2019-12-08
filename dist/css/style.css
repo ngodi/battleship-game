@@ -1,0 +1,18 @@
+.green{
+   background: green;
+}
+td{
+    border: 1px solid gray;
+    width: 30px;
+    height: 30px;
+    border-collapse: collapse;
+    cursor: pointer;
+}
+td:active{
+    transform: scale(0.9);
+}
+
+.boards{
+    display: flex;
+    justify-content: space-evenly;
+}

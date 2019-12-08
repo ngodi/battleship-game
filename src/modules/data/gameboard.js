@@ -1,57 +1,63 @@
 import ShipFactory from './ship';
 
-const Gameboard = () => {
-    
-const board =  new Array(10).fill(null).map(() => new Array(10).fill(10));
-const boardO =  new Array(10).fill(null).map(() => new Array(10).fill(10));
+const Gameboard = (() => {
 
-const validatePlacement = (ship, row, col, direction) => {
+const validatePlacement = (ship, position, board, direction) => {
     const len = ship.len;
-    if(direction == 'd'){
+    if(direction == 'down'){
+          let k = 0;
          for(let i = 0; i < len; i++){
-            if(board[row + i][col] == undefined && board[row +i][col] != null){
+            if(board[position + k] !== null){
                 return false;
             }
+            k += 10;
        }
-    }else if(direction == 'r'){
+    }else if(direction == 'right'){
         for(let i = 0; i < len; i++){
-            if(board[row][col + i] == undefined && board[row][col + i] != null){
+            if(board[position + i] !== null){
                 return false;
             }
        }
     }
    return true;
 };
-const findShip = () => {
-    ships.filter(ship =>{
-        return board[row][col] == ship.cha
+const findShip = (ships, board) => {
+  return ships.filter(ship =>{
+        return board[position] == ship.cha.split('-')[1]
     });
 };
-const placeShip = (ship, row, col, dir) => {
-    const len = ship.len
-    const cha = ship.cha
-        // board[row + len-1][col]
+const placeShip = (ship, position, board, dir) => {
+let result = validatePlacement(ship, position, board, dir);
+if(result){
+    const len = ship.len;
+    const cha = ship.cha;
         let i = 0;
+        let k = 0;
     while(i < len){
-        if(dir == 'd'){
-          board[row + i][col] = cha;
+        if(dir == 'down'){
+          board[position + k] = `${i}-${cha}`;
           i++;
-      }else if(dir == 'r'){
-        board[row][col  + i] = cha;
+          k+=10;
+      }else if(dir == 'right'){
+        board[position + i] = `${i}-${cha}`;
         i++;
      }
   }
+}else{
+    console.log('invalid ship placement');
+}
+
 };
-const receiveAttack = (row, col) => {
-  if(board[row][col] == null || board[row][col] == undefined){
-    board[row][col] = 'x';
-    boardO[row][col] = 'x';
-  }else if(boardO[row][col] != null){
+const receiveAttack = (position, board) => {
+  if(board[position] === null || board[position] === undefined || board[position] === 'O'){
+    board[position] = 'O';
+    return 'missed shot';
+  }else if(board[position] === 'X'){
       return 'hit already';
   }else{
-   let ship = findShip();
-   let position = ship.indexOf(board[row][col]);
-   ship.hit(position);
+   let ship = findShip()[0];
+   let index = ship.cha.split('-')[0];
+   ship.hit(index);
 }
 };
 
@@ -61,6 +67,6 @@ return  ships.every(ship => ship.isSunk());
 
 
 
-return { board, boardO, validatePlacement, placeShip, receiveAttack, allSunk };
-};
+return { validatePlacement, placeShip, receiveAttack, allSunk };
+})();
 export default Gameboard
