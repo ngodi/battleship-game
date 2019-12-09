@@ -25,9 +25,15 @@ const Game = (() => {
       Gameboard.placeShip(battleship, 11, playerStorage, 'right');
       Gameboard.placeShip(cruiser, 37, playerStorage, 'down');
   }
+  const attack = () => {
+     Gameboard.receiveAttack(20, playerStorage);
+     Gameboard.receiveAttack(31, playerStorage);
+     Gameboard.receiveAttack(37, playerStorage);
+     Gameboard.receiveAttack(37, playerStorage);
+  }
   /*  const player = Player('player', turn=true, playerBoard);
    const computer = Player('computer', turn=false, computerBoard); */
-   return { showBoards, place }
+   return { showBoards, place, attack, carrier, battleship, cruiser, submarine, destroyer }
 })();
 
 export default Game;

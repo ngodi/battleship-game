@@ -1,4 +1,5 @@
 import ShipFactory from './ship';
+import Game from '../game';
 
 const Gameboard = (() => {
 
@@ -21,11 +22,7 @@ const validatePlacement = (ship, position, board, direction) => {
     }
    return true;
 };
-const findShip = (ships, board) => {
-  return ships.filter(ship =>{
-        return board[position] == ship.cha.split('-')[1]
-    });
-};
+
 const placeShip = (ship, position, board, dir) => {
 let result = validatePlacement(ship, position, board, dir);
 if(result){
@@ -44,20 +41,22 @@ if(result){
      }
   }
 }else{
-    console.log('invalid ship placement');
+    console.log('invalid ship placement');//modify to DOM message
 }
 
 };
 const receiveAttack = (position, board) => {
-  if(board[position] === null || board[position] === undefined || board[position] === 'O'){
-    board[position] = 'O';
-    return 'missed shot';
-  }else if(board[position] === 'X'){
-      return 'hit already';
+  const ships = [ Game.carrier, Game.battleship, Game.cruiser, Game.submarine, Game.destroyer];
+  if(board[position] === null){
+    board[position] += 'O';
+    console.log('missed shot');
+  }else if(/X/.test(board[position])){
+      console.log('hit already');
   }else{
-   let ship = findShip()[0];
-   let index = ship.cha.split('-')[0];
-   ship.hit(index);
+   let ship =  ships.filter(hitship => board[position].split('-')[1] == hitship.cha);
+   let index = board[position].split('-')[0];
+   board[position] += 'X';
+   ship[0].hit(index);
 }
 };
 
