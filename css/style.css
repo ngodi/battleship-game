@@ -1,5 +1,5 @@
 .green{
-   background: green;
+   background-color: green;
 }
 td{
     border: 1px solid gray;
@@ -7,6 +7,8 @@ td{
     height: 30px;
     border-collapse: collapse;
     cursor: pointer;
+    text-align: center;
+    padding: 5px;
 }
 td:active{
     transform: scale(0.9);
@@ -15,4 +17,12 @@ td:active{
 .boards{
     display: flex;
     justify-content: space-evenly;
+}
+.hit{
+    color:yellow;
+    font-weight: bold;
+}
+.miss{
+    color: red;
+    font-weight: bold;
 }
