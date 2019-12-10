@@ -2,8 +2,17 @@ import ShipFactory from './ship';
 
 const Gameboard = () => {
 
+const findEdge = (position) => {
+    const edges = [9, 19, 29, 39, 49, 59, 69, 79, 89, 99];
+    for(let i = 0;i<edges.length;i++) {
+        if(edges[i] >= position){
+            return edges[i];
+            }
+        }
+     };
 const validatePlacement = (ship, position, board, direction) => {
     const len = ship.len;
+    const edge = findEdge(position);
     if(direction == 'down'){
           let k = 0;
          for(let i = 0; i < len; i++){
@@ -18,10 +27,19 @@ const validatePlacement = (ship, position, board, direction) => {
                 return false;
             }
        }
+       if((position + (len-1)) > edge){
+           return false
+       }
     }
    return true;
 };
-
+const charToShip = {
+    'c':'carrier', 'b': 'battleship', 'cr':'cruiser', 's':'submarine', 'd':'destroyer'
+    };
+const shipName = ship => {
+   return charToShip[ship.cha];
+} 
+ 
 let placedShips = [];
 const placeShip = (ship, position, board, dir) => {
 let result = validatePlacement(ship, position, board, dir);
@@ -44,7 +62,7 @@ if(result && placedShips.includes(ship)){
      }
   }
   placedShips.push(ship);
-  console.log(placedShips);
+  console.log(shipName(ship));
 }else{
     console.log('invalid ship placement');//modify to DOM message
 }
@@ -78,6 +96,6 @@ return  ships.every(ship => ship.isSunk());
 
 
 
-return { validatePlacement, placeShip, receiveAttack, allSunk, ships };
+return { validatePlacement, placeShip, receiveAttack, allSunk, ships, shipName, placedShips };
 };
 export default Gameboard
