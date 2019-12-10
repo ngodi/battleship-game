@@ -26,8 +26,16 @@ const ui = (() => {
         }
         document.getElementById(`${elem}`).innerHTML = markup;
     };
+    const getPlacement = () => {
+        const ship = document.getElementById('ship').value;
+        const position = document.getElementById('position').value;
+        const direction = document.getElementById('direction').value;
+        return {
+            ship, position, direction
+        }
+    }
     return {
-        displayBoard
+        displayBoard, getPlacement
     }
 })();
 

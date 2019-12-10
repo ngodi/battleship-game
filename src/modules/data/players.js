@@ -1,11 +1,17 @@
-const Player = (type, turn, board) => {
-    this.type= type;
-    this.turn = turn;
-    this.board = board;
-    function attack(enemyBoard, position){
+import ShipFactory from './ship';
+import ui from '../ui';
+import Gameboard from './gameboard';
+
+const Player = (name, board) => {
+    const attack = (enemyBoard, position) => {
         enemyBoard.receiveAttack(position);
     }
-  return { attack };
+
+   const showBoard = (boardStorage, boardName) => {
+    ui.displayBoard(boardStorage, boardName);
+ }
+
+  return { attack, showBoard, name, board};
   };
   
   export default Player

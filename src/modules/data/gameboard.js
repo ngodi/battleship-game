@@ -1,7 +1,6 @@
 import ShipFactory from './ship';
-import Game from '../game';
 
-const Gameboard = (() => {
+const Gameboard = () => {
 
 const validatePlacement = (ship, position, board, direction) => {
     const len = ship.len;
@@ -23,9 +22,13 @@ const validatePlacement = (ship, position, board, direction) => {
    return true;
 };
 
+let placedShips = [];
 const placeShip = (ship, position, board, dir) => {
 let result = validatePlacement(ship, position, board, dir);
-if(result){
+
+if(result && placedShips.includes(ship)){
+    console.log('ship placed already');//modify to DOM message
+}else if(result && !placedShips.includes(ship)){
     const len = ship.len;
     const cha = ship.cha;
         let i = 0;
@@ -40,13 +43,22 @@ if(result){
         i++;
      }
   }
+  placedShips.push(ship);
+  console.log(placedShips);
 }else{
     console.log('invalid ship placement');//modify to DOM message
 }
 
 };
+const carrier = ShipFactory(5, 'c');
+const battleship = ShipFactory(4, 'b');
+const cruiser = ShipFactory(3,'cr');
+const submarine = ShipFactory(3,'s');
+const destroyer = ShipFactory(2,'d');
+
+let ships =  [ carrier, battleship, cruiser, submarine, destroyer];
 const receiveAttack = (position, board) => {
-  const ships = [ Game.carrier, Game.battleship, Game.cruiser, Game.submarine, Game.destroyer];
+  ships = [ carrier, battleship, cruiser, submarine, destroyer];
   if(board[position] === null){
     board[position] += 'O';
     console.log('missed shot');
@@ -60,12 +72,12 @@ const receiveAttack = (position, board) => {
 }
 };
 
-const allSunk = (ships) => {
+const allSunk = () => {
 return  ships.every(ship => ship.isSunk());
 };
 
 
 
-return { validatePlacement, placeShip, receiveAttack, allSunk };
-})();
+return { validatePlacement, placeShip, receiveAttack, allSunk, ships };
+};
 export default Gameboard
