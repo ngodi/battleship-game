@@ -14,6 +14,39 @@
       
           </table>
           <h3>Player Board</h3>
+             <table id="shipTable">
+                <thead>
+                    <tr>
+                      <th>Ship</th><th>Position</th><th>Direction</th><th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>
+                          <select name="ship" id="ship">
+                            <option value="c">carrier</option>
+                            <option value="b">battleship</option>
+                            <option value="s">submarine</option>
+                            <option value="cr">cruiser</option>
+                            <option value="d">destroyer</option>
+                          </select>
+                        </td>
+                        <td>
+                          <input type="number" id="position" placeholder="Enter position: 0 - 99">
+                        </td>
+                        <td>
+                          <select name="direction" id="direction">
+                            <option>down</option>
+                            <option>right</option>
+                          </select>
+                        </td>
+                        <td>
+                            <button id="submit" class="submit">Place</button>
+                        </td>
+                      </tr>
+                  </tbody>
+             </table>
+             <button id="start" class="start">start game</button>
      </div>
      <div class="rigt-section">
         <table id="computerBoard">
