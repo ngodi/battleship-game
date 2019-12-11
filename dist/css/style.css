@@ -32,3 +32,10 @@ td:active{
     margin-top: 80px;
     color: red;
 }
+
+.start{
+    background: greenyellow;
+    border: none;
+    border-radius: 3px;
+    padding: 20px;
+}

@@ -16,6 +16,41 @@ import Player from './modules/data/players';
    computer.showBoard(computerStorage, 'computerBoard');
   };
   
+  const computerInit = () => {
+    const { ships: [carrier, battleship, cruiser, submarine, destroyer ] } = computerBoard
+    const predefinedPlacements = [
+     [ [carrier, 0, computerStorage, 'down'], 
+       [battleship, 2, computerStorage, 'right'], 
+       [cruiser,7 , computerStorage, 'down'], 
+       [submarine, 41, computerStorage, 'right'],
+       [destroyer, 70, computerStorage, 'right'] 
+     ], 
+      [ [carrier, 0, computerStorage, 'down'], 
+      [battleship, 2, computerStorage, 'down'], 
+      [cruiser, 3, computerStorage, 'down'], 
+      [submarine, 4, computerStorage, 'down'],
+      [destroyer, 5, computerStorage, 'down'] 
+     ], 
+     [ [carrier, 9, computerStorage, 'down'], 
+     [battleship, 2, computerStorage, 'right'], 
+     [cruiser, 30, computerStorage, 'down'], 
+     [submarine, 44, computerStorage, 'right'],
+     [destroyer, 55, computerStorage, 'down'] 
+   ]
+    
+    ];
+   let randomPlacement = Math.floor(Math.random() * 3);
+    predefinedPlacements[randomPlacement].forEach(placement => {
+      computerBoard.placeShip(...placement);
+      computer.showBoard(computerStorage, 'computerBoard');
+    });
+    let turn = 'player';
+    const setTurn = () => {
+      turn = (turn == 'player')?'computer':'player';
+    }
+  
+  };
+  
    document.getElementById('submit').addEventListener('click', () => {
       const result = ui.getPlacement();
      let ship = playerBoard.ships.filter(ship => ship.cha == result.ship)
@@ -33,6 +68,20 @@ import Player from './modules/data/players';
       document.getElementById("mid-section").innerHTML=markup;
   });
 
+  const playerAttack = (computerStorage) => {
+    for(let i = 0;i<100;i++){
+      document.getElementById(`${i}`).addEventListener('click', ()=> {
+      player.attack(computerBoard, i, computerStorage);
+      computer.showBoard(computerStorage, 'computerBoard');
+   });
+   }
+ };
+  
+ const computerAttack = (playerStorage) => {
+   let position = Math.floor(Math.randon() * 100);
+   computer.attack(playerBoard, position, playerStorage);
+   player.showBoard(playerStorage, 'playerBoard');
+ }
   document.getElementById('start').addEventListener('click', ()=> {
     if(playerBoard.placedShips.length < 5){
         ui.showMessage("finish placing ships");
@@ -40,48 +89,19 @@ import Player from './modules/data/players';
   document.getElementById('ship-table-container').setAttribute('class', 'hidden');
   document.querySelector('.mid-section').setAttribute('class', 'hidden');
     }
+    computerInit();
+    playerAttack(computerStorage);
+    computerAttack(playerStorage);
+    playerAttack(computerStorage);
   });
-const computerPlay = () => {
-  const { ships: [carrier, battleship, cruiser, submarine, destroyer ] } = computerBoard
-  const predefinedPlacements = [
-   [ [carrier, 0, computerStorage, 'down'], 
-     [battleship, 2, computerStorage, 'right'], 
-     [cruiser,7 , computerStorage, 'down'], 
-     [submarine, 41, computerStorage, 'right'],
-     [destroyer, 70, computerStorage, 'right'] 
-   ], 
-    [ [carrier, 0, computerStorage, 'down'], 
-    [battleship, 2, computerStorage, 'down'], 
-    [cruiser, 3, computerStorage, 'down'], 
-    [submarine, 4, computerStorage, 'down'],
-    [destroyer, 5, computerStorage, 'down'] 
-   ], 
-   [ [carrier, 9, computerStorage, 'down'], 
-   [battleship, 2, computerStorage, 'right'], 
-   [cruiser, 30, computerStorage, 'down'], 
-   [submarine, 44, computerStorage, 'right'],
-   [destroyer, 55, computerStorage, 'down'] 
- ]
+
   
-  ];
- let randomPlacement = Math.floor(Math.random() * 3);
-  predefinedPlacements[randomPlacement].forEach(placement => {
-    computerBoard.placeShip(...placement);
-    computer.showBoard(computerStorage, 'computerBoard');
-  });
-  let turn = 'player';
-  const setTurn = () => {
-    turn = (turn == 'player')?'computer':'player';
-  }
-  
-  player.attack(computerBoard, 72, computerStorage);
-  computer.showBoard(computerStorage, 'computerBoard');
-  computer.attack(playerBoard, 90, playerStorage);
-  player.showBoard(playerStorage, 'playerBoard');
-};
+
+
 const init = () => {
     renderBoards();
-    computerPlay();
+  
 };
 
-init();
+
+  init();

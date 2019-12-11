@@ -63,8 +63,6 @@ if(result && placedShips.includes(ship)){
      }
   }
   placedShips.push(ship);
-}else{
-    ui.showMessage('invalid ship placement');
 }
 
 };
