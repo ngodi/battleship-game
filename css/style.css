@@ -28,3 +28,7 @@ td:active{
 .hidden{
     display:none;
 }
+.message-section{
+    margin-top: 80px;
+    color: red;
+}
