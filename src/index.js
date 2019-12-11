@@ -8,8 +8,8 @@ import Player from './modules/data/players';
    const playerBoard = Gameboard();
    const computerBoard = Gameboard();
    
-   const player = Player('player', playerBoard);
-   const computer = Player('computer', computerBoard);
+   const player = Player('player', playerBoard, playerStorage);
+   const computer = Player('computer', computerBoard, computerStorage);
    
   const renderBoards = () => {
    player.showBoard(playerStorage, 'playerBoard');
@@ -68,7 +68,16 @@ const computerPlay = () => {
   predefinedPlacements[randomPlacement].forEach(placement => {
     computerBoard.placeShip(...placement);
     computer.showBoard(computerStorage, 'computerBoard');
-  })
+  });
+  let turn = 'player';
+  const setTurn = () => {
+    turn = (turn == 'player')?'computer':'player';
+  }
+  
+  player.attack(computerBoard, 72, computerStorage);
+  computer.showBoard(computerStorage, 'computerBoard');
+  computer.attack(playerBoard, 90, playerStorage);
+  player.showBoard(playerStorage, 'playerBoard');
 };
 const init = () => {
     renderBoards();

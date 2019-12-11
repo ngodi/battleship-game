@@ -10,11 +10,15 @@ const ui = (() => {
             for(let j = 0; j<10; j++){
                 if(board[id] !== null){               
                     if(/X/.test(board[id])){
-                        output += `<td id=${id} class='hit green'>${board[id].match(/X/)[0]}</td>`;
+                   output += (elem == 'playerBoard')?
+                   `<td id=${id} class='hit green'>${board[id].match(/X/)[0]}</td>`:
+                   `<td id=${id} class='hit'>${board[id].match(/X/)[0]}</td>`;
                     }else if(/O/.test(board[id])){
                         output += `<td id=${id} class='miss'>${board[id].match(/O/)[0]}</td>`; 
                     }else{
-                        output += `<td id=${id} class='green'></td>`;  
+                        output += (elem == 'playerBoard')?
+                          `<td id=${id} class='green'></td>`:
+                          `<td id=${id}></td>`; 
                     }
                 }else{
                     output += `<td id=${id}></td>`;

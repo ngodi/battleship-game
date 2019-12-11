@@ -1,17 +1,15 @@
-import ShipFactory from './ship';
 import ui from '../ui';
-import Gameboard from './gameboard';
 
-const Player = (name, board) => {
-    const attack = (enemyBoard, position) => {
-        enemyBoard.receiveAttack(position);
+const Player = (name, board, storage) => {
+    const attack = (enemyBoard, position, storage) => {
+        enemyBoard.receiveAttack(position, storage);
     }
 
    const showBoard = (boardStorage, boardName) => {
     ui.displayBoard(boardStorage, boardName);
  }
 
-  return { attack, showBoard, name, board};
+  return { attack, showBoard, name, board, storage};
   };
   
   export default Player
