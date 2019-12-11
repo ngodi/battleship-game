@@ -62,7 +62,7 @@ if(result && placedShips.includes(ship)){
      }
   }
   placedShips.push(ship);
-  console.log(shipName(ship));
+  //console.log(shipName(ship));
 }else{
     console.log('invalid ship placement');//modify to DOM message
 }

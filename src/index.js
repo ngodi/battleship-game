@@ -42,9 +42,28 @@ import ShipFactory from './modules/data/ship';
   document.querySelector('.mid-section').setAttribute('class', 'hidden');
     }
   });
+const computerPlay = () => {
+  const { ships: [carrier, battleship, cruiser, submarine, destroyer ] } = computerBoard
+  const predefinedPlacements = [
+   [ [carrier, 0, computerStorage, 'down'], 
+     [battleship, 2, computerStorage, 'down'], 
+     [cruiser, 3, computerStorage, 'down'], 
+     [submarine, 4, computerStorage, 'down'],
+     [destroyer, 5, computerStorage, 'down'] 
+   ]
+  
+  ];
 
+  predefinedPlacements[0].forEach(placement => {
+    computerBoard.placeShip(...placement);
+  
+  })
+  player.showBoard(playerStorage, 'playerBoard');
+  computer.showBoard(computerStorage, 'computerBoard');
+};
 const init = () => {
     renderBoards();
+    computerPlay();
 };
 
 init();
