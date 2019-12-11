@@ -33,9 +33,12 @@ const ui = (() => {
         return {
             ship, position, direction
         }
-    }
+    };
+    const showMessage = (message) => {
+     document.getElementById('message-section').innerHTML = message;
+    };
     return {
-        displayBoard, getPlacement
+        displayBoard, getPlacement, showMessage
     }
 })();
 

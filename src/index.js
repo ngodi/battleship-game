@@ -1,8 +1,6 @@
 import ui from './modules/ui';
 import Gameboard from './modules/data/gameboard';
 import Player from './modules/data/players';
-import ShipFactory from './modules/data/ship';
-
 
    const playerStorage = new Array(100).fill(null);
    const computerStorage = new Array(100).fill(null);
@@ -27,16 +25,17 @@ import ShipFactory from './modules/data/ship';
       player.showBoard(playerStorage, 'playerBoard');
       computer.showBoard(computerStorage, 'computerBoard');
       //placed ships display
-      let markup = '';
+      let markup = '<ol>';
       playerBoard.placedShips.forEach(ship => {
-        markup += `<p>${playerBoard.shipName(ship)}</p>`;
+        markup += `<li>${playerBoard.shipName(ship)}</li>`;
       });
+      markup += '</ol>';
       document.getElementById("mid-section").innerHTML=markup;
   });
 
   document.getElementById('start').addEventListener('click', ()=> {
     if(playerBoard.placedShips.length < 5){
-        console.log("finish placing ships");
+        ui.showMessage("finish placing ships");
     }else{
   document.getElementById('ship-table-container').setAttribute('class', 'hidden');
   document.querySelector('.mid-section').setAttribute('class', 'hidden');
