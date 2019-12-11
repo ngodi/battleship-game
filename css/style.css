@@ -18,7 +18,7 @@ td:active{
     justify-content: space-evenly;
 }
 .hit{
-    color:yellow;
+    color:blue;
     font-weight: bold;
 }
 .miss{
