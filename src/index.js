@@ -46,20 +46,30 @@ const computerPlay = () => {
   const { ships: [carrier, battleship, cruiser, submarine, destroyer ] } = computerBoard
   const predefinedPlacements = [
    [ [carrier, 0, computerStorage, 'down'], 
-     [battleship, 2, computerStorage, 'down'], 
-     [cruiser, 3, computerStorage, 'down'], 
-     [submarine, 4, computerStorage, 'down'],
-     [destroyer, 5, computerStorage, 'down'] 
-   ]
+     [battleship, 2, computerStorage, 'right'], 
+     [cruiser,7 , computerStorage, 'down'], 
+     [submarine, 41, computerStorage, 'right'],
+     [destroyer, 70, computerStorage, 'right'] 
+   ], 
+    [ [carrier, 0, computerStorage, 'down'], 
+    [battleship, 2, computerStorage, 'down'], 
+    [cruiser, 3, computerStorage, 'down'], 
+    [submarine, 4, computerStorage, 'down'],
+    [destroyer, 5, computerStorage, 'down'] 
+   ], 
+   [ [carrier, 9, computerStorage, 'down'], 
+   [battleship, 2, computerStorage, 'right'], 
+   [cruiser, 30, computerStorage, 'down'], 
+   [submarine, 44, computerStorage, 'right'],
+   [destroyer, 55, computerStorage, 'down'] 
+ ]
   
   ];
-
-  predefinedPlacements[0].forEach(placement => {
+ let randomPlacement = Math.floor(Math.random() * 3);
+  predefinedPlacements[randomPlacement].forEach(placement => {
     computerBoard.placeShip(...placement);
-  
+    computer.showBoard(computerStorage, 'computerBoard');
   })
-  player.showBoard(playerStorage, 'playerBoard');
-  computer.showBoard(computerStorage, 'computerBoard');
 };
 const init = () => {
     renderBoards();
