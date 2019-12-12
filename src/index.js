@@ -44,10 +44,7 @@ import Player from './modules/data/players';
       computerBoard.placeShip(...placement);
       computer.showBoard(computerStorage, 'computerBoard');
     });
-    let turn = 'player';
-    const setTurn = () => {
-      turn = (turn == 'player')?'computer':'player';
-    }
+  
   
   };
   
@@ -68,17 +65,22 @@ import Player from './modules/data/players';
       document.getElementById("mid-section").innerHTML=markup;
   });
 
-  const playerAttack = (computerStorage) => {
-    for(let i = 0;i<100;i++){
-      document.getElementById(`${i}`).addEventListener('click', ()=> {
+const playerAttack = () => {
+  for(let i = 0;i<100;i++){
+    document.getElementById(`${i}`).addEventListener('click', ()=>{
       player.attack(computerBoard, i, computerStorage);
-      computer.showBoard(computerStorage, 'computerBoard');
-   });
-   }
- };
-  
- const computerAttack = (playerStorage) => {
-   let position = Math.floor(Math.randon() * 100);
+      if(computerStorage[i] === null){
+        document.getElementById(`${i}`).innerText = 'O';
+      }else if(/X/.test(computerStorage[i])){
+        document.getElementById(`${i}`).innerText = `X`;
+      }else if(/O/.test(computerStorage[i])){
+        document.getElementById(`${i}`).innerText = `O`;
+      }
+    })
+  }
+};
+ const computerAttack = () => {
+   let position = Math.floor(Math.random() * 100);
    computer.attack(playerBoard, position, playerStorage);
    player.showBoard(playerStorage, 'playerBoard');
  }
@@ -88,20 +90,35 @@ import Player from './modules/data/players';
     }else{
   document.getElementById('ship-table-container').setAttribute('class', 'hidden');
   document.querySelector('.mid-section').setAttribute('class', 'hidden');
+  
+  let turn = 'player';
+  const setTurn = () => {
+    turn = (turn == 'player')?'computer':'player';
+  }
+  for(let i = 0;i<100;i++){
+    if(turn == 'player'){
+      playerAttack();
+      setTurn();
+    }else{
+      computerAttack();
+      setTurn();
     }
-    computerInit();
-    playerAttack(computerStorage);
-    computerAttack(playerStorage);
-    playerAttack(computerStorage);
+  }
+    }
+   
+
   });
 
-  
+   
+
 
 
 const init = () => {
     renderBoards();
-  
+  computerInit();
+
 };
 
-
   init();
+
+  

@@ -1,4 +1,4 @@
-
+import { playerAttack } from '../index';
 const ui = (() => {
     const displayBoard = (board, elem) => {
         let id = 0;
@@ -45,9 +45,11 @@ const ui = (() => {
     const showMessage = (message) => {
      document.getElementById('message-section').innerHTML = message;
     };
+
     return {
         displayBoard, getPlacement, showMessage
     }
+   
 })();
 
 export default ui;

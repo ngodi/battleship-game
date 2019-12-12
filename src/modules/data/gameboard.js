@@ -63,6 +63,7 @@ if(result && placedShips.includes(ship)){
      }
   }
   placedShips.push(ship);
+  ui.showMessage('');
 }
 
 };
@@ -77,9 +78,9 @@ const receiveAttack = (position, board) => {
   ships = [ carrier, battleship, cruiser, submarine, destroyer];
   if(board[position] === null){
     board[position] += 'O';
-    ui.showMessage('missed shot');
+   // ui.showMessage('missed shot');
   }else if(/X/.test(board[position])){
-      ui.showMessage('hit already');
+    //  ui.showMessage('hit already');
   }else{
    let ship =  ships.filter(hitship => board[position].split('-')[1] == hitship.cha);
    let index = board[position].split('-')[0];
