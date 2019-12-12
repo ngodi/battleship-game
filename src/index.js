@@ -79,6 +79,9 @@ const playerAttack = () => {
       }else if(/O/.test(computerStorage[i])){
         document.getElementById(`${i}`).innerText = `O`;
       }
+      if(computerBoard.allSunk()){
+        ui.showMessage('Player WINS');
+      }
       computerAttack();
     })
   }
@@ -88,25 +91,22 @@ const playerAttack = () => {
    let position = Math.floor(Math.random() * 100);
    computer.attack(playerBoard, position, playerStorage);
    player.showBoard(playerStorage, 'playerBoard');
+   if(playerBoard.allSunk()){
+    ui.showMessage('Computer WINS');
+   }
  }
-
 
   document.getElementById('start').addEventListener('click', ()=> {
     if(playerBoard.placedShips.length < 5){
         ui.showMessage("finish placing ships");
     }else{
   document.getElementById('ship-table-container').setAttribute('class', 'hidden');
-  document.querySelector('.mid-section').setAttribute('class', 'hidden');
   playerAttack(); 
     }
    
 
   });
-
  
-
-
-
 const init = () => {
     renderBoards();
   computerInit();
