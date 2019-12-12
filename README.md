@@ -34,7 +34,7 @@ $ cd battleship-game $ npm install $ webpack open dist/index.html to the browser
 
 Testing
 -------
-$npm run test*   CSS3
+$npm run test
 
 Author
 ------
