@@ -79,7 +79,7 @@ const playerAttack = () => {
       }else if(/O/.test(computerStorage[i])){
         document.getElementById(`${i}`).innerText = `O`;
       }
-      turn = 'computer';
+      computerAttack();
     })
   }
   
@@ -88,18 +88,8 @@ const playerAttack = () => {
    let position = Math.floor(Math.random() * 100);
    computer.attack(playerBoard, position, playerStorage);
    player.showBoard(playerStorage, 'playerBoard');
-   turn = 'player'
  }
 
- const gamePlay = () => {
-  if(turn == 'player'){
-    playerAttack();
-   
-  }else{
-    computerAttack();
-  }
-  
-};
 
   document.getElementById('start').addEventListener('click', ()=> {
     if(playerBoard.placedShips.length < 5){
@@ -107,17 +97,13 @@ const playerAttack = () => {
     }else{
   document.getElementById('ship-table-container').setAttribute('class', 'hidden');
   document.querySelector('.mid-section').setAttribute('class', 'hidden');
-  
-  while(true){
-    gamePlay();
-  }
-
+  playerAttack(); 
     }
    
 
   });
 
-   
+ 
 
 
 
@@ -129,4 +115,4 @@ const init = () => {
 
   init();
 
-  
+   

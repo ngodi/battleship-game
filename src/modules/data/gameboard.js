@@ -45,9 +45,10 @@ let placedShips = [];
 const placeShip = (ship, position, board, dir) => {
 let result = validatePlacement(ship, position, board, dir);
 
-if(result && placedShips.includes(ship)){
+if(placedShips.includes(ship)){  
     ui.showMessage('ship placed already');
-}else if(result && !placedShips.includes(ship)){
+}else if(result == true && !placedShips.includes(ship)){
+    ui.showMessage('');
     const len = ship.len;
     const cha = ship.cha;
         let i = 0;
@@ -63,7 +64,9 @@ if(result && placedShips.includes(ship)){
      }
   }
   placedShips.push(ship);
-  ui.showMessage('');
+ 
+}else if(result == false){
+    ui.showMessage('Invalid position');
 }
 
 };
@@ -76,16 +79,17 @@ const destroyer = ShipFactory(2,'d');
 let ships =  [ carrier, battleship, cruiser, submarine, destroyer];
 const receiveAttack = (position, board) => {
   ships = [ carrier, battleship, cruiser, submarine, destroyer];
-  if(board[position] === null){
-    board[position] += 'O';
-   // ui.showMessage('missed shot');
+  if(board[position] === null || board[position] === 'O'){
+    board[position] = 'O';
+     ui.showMessage('missed shot');
   }else if(/X/.test(board[position])){
-    //  ui.showMessage('hit already');
+    ui.showMessage('hit already');
   }else{
    let ship =  ships.filter(hitship => board[position].split('-')[1] == hitship.cha);
    let index = board[position].split('-')[0];
    board[position] += 'X';
    ship[0].hit(index);
+   ui.showMessage('');
 }
 };
 
