@@ -10,6 +10,8 @@ import Player from './modules/data/players';
    
    const player = Player('player', playerBoard, playerStorage);
    const computer = Player('computer', computerBoard, computerStorage);
+
+   let turn = 'player';
    
   const renderBoards = () => {
    player.showBoard(playerStorage, 'playerBoard');
@@ -64,6 +66,7 @@ import Player from './modules/data/players';
       markup += '</ol>';
       document.getElementById("mid-section").innerHTML=markup;
   });
+ 
 
 const playerAttack = () => {
   for(let i = 0;i<100;i++){
@@ -76,14 +79,28 @@ const playerAttack = () => {
       }else if(/O/.test(computerStorage[i])){
         document.getElementById(`${i}`).innerText = `O`;
       }
+      turn = 'computer';
     })
   }
+  
 };
  const computerAttack = () => {
    let position = Math.floor(Math.random() * 100);
    computer.attack(playerBoard, position, playerStorage);
    player.showBoard(playerStorage, 'playerBoard');
+   turn = 'player'
  }
+
+ const gamePlay = () => {
+  if(turn == 'player'){
+    playerAttack();
+   
+  }else{
+    computerAttack();
+  }
+  
+};
+
   document.getElementById('start').addEventListener('click', ()=> {
     if(playerBoard.placedShips.length < 5){
         ui.showMessage("finish placing ships");
@@ -91,19 +108,10 @@ const playerAttack = () => {
   document.getElementById('ship-table-container').setAttribute('class', 'hidden');
   document.querySelector('.mid-section').setAttribute('class', 'hidden');
   
-  let turn = 'player';
-  const setTurn = () => {
-    turn = (turn == 'player')?'computer':'player';
+  while(true){
+    gamePlay();
   }
-  for(let i = 0;i<100;i++){
-    if(turn == 'player'){
-      playerAttack();
-      setTurn();
-    }else{
-      computerAttack();
-      setTurn();
-    }
-  }
+
     }
    
 
