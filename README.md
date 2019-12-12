@@ -3,7 +3,7 @@ Battleship
 
 ![battleship](battleship.png)
 
-Battleship is a game played on the browser between a user and the computer. The game starts with both users manually placing their ships on their respective Gameboards(a grid of squares). The ships are shot by the opponent in-turn with the objective to hit the full length of a ship and all the other ships. A missed shot is marked by a circle on the gameboard and a hit is marked by a cross(X) on the gameboard and on the hit ship as well. The game ends when all the ships on a given gameboard have all been hit; they are said to be sunk, the opponent is then declared winner.
+Battleship is a game played on the browser between a user and the computer. The game starts with both users manually placing their ships on their respective Gameboards(a grid of squares). The ships are shot by the opponent in-turn with the objective to hit the full length of a ship and all the other ships. A missed shot is marked by a circle(O) on the gameboard and a hit is marked by a cross(X) on the gameboard and on the hit ship as well. The game ends when all the ships on a given gameboard have all been hit; they are said to be sunk, the opponent is then declared winner.
 
 Technologies and Tools used
 ---------------------------
@@ -31,6 +31,10 @@ $git clone git@github.com:ngodi/battleship-game.git
 cd into the directory, install dependencies, start(build and run)
 
 $ cd battleship-game $ npm install $ webpack open dist/index.html to the browser
+
+Testing
+-------
+$npm run test*   CSS3
 
 Author
 ------
