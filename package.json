@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,10 @@
   },
   "homepage": "https://github.com/ngodi/battleship-game#readme",
   "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
     "jest": "^24.9.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"

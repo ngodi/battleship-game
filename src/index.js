@@ -1,118 +1,118 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-plusplus */
+/* eslint-disable radix */
+/* eslint-disable arrow-parens */
 import ui from './modules/ui';
 import Gameboard from './modules/data/gameboard';
 import Player from './modules/data/players';
 
-   const playerStorage = new Array(100).fill(null);
-   const computerStorage = new Array(100).fill(null);
+const playerBoard = Gameboard();
+const computerBoard = Gameboard();
 
-   const playerBoard = Gameboard();
-   const computerBoard = Gameboard();
-   
-   const player = Player('player', playerBoard, playerStorage);
-   const computer = Player('computer', computerBoard, computerStorage);
+const player = Player('player', playerBoard);
+const computer = Player('computer', computerBoard);
 
-   let turn = 'player';
-   
-  const renderBoards = () => {
-   player.showBoard(playerStorage, 'playerBoard');
-   computer.showBoard(computerStorage, 'computerBoard');
-  };
-  
-  const computerInit = () => {
-    const { ships: [carrier, battleship, cruiser, submarine, destroyer ] } = computerBoard
-    const predefinedPlacements = [
-     [ [carrier, 0, computerStorage, 'down'], 
-       [battleship, 2, computerStorage, 'right'], 
-       [cruiser,7 , computerStorage, 'down'], 
-       [submarine, 41, computerStorage, 'right'],
-       [destroyer, 70, computerStorage, 'right'] 
-     ], 
-      [ [carrier, 0, computerStorage, 'down'], 
-      [battleship, 2, computerStorage, 'down'], 
-      [cruiser, 3, computerStorage, 'down'], 
-      [submarine, 4, computerStorage, 'down'],
-      [destroyer, 5, computerStorage, 'down'] 
-     ], 
-     [ [carrier, 9, computerStorage, 'down'], 
-     [battleship, 2, computerStorage, 'right'], 
-     [cruiser, 30, computerStorage, 'down'], 
-     [submarine, 44, computerStorage, 'right'],
-     [destroyer, 55, computerStorage, 'down'] 
-   ]
-    
-    ];
-   let randomPlacement = Math.floor(Math.random() * 3);
-    predefinedPlacements[randomPlacement].forEach(placement => {
-      computerBoard.placeShip(...placement);
-      computer.showBoard(computerStorage, 'computerBoard');
-    });
-  
-  
-  };
-  
-   document.getElementById('submit').addEventListener('click', () => {
-      const result = ui.getPlacement();
-     let ship = playerBoard.ships.filter(ship => ship.cha == result.ship)
-     //call to placeship to board
-     playerBoard.placeShip(ship[0], parseInt(result.position), playerStorage, result.direction);
-     //call to display updated gamboard of player
-      player.showBoard(playerStorage, 'playerBoard');
-      computer.showBoard(computerStorage, 'computerBoard');
-      //placed ships display
-      let markup = '<ol>';
-      playerBoard.placedShips.forEach(ship => {
-        markup += `<li>${playerBoard.shipName(ship)}</li>`;
-      });
-      markup += '</ol>';
-      document.getElementById("mid-section").innerHTML=markup;
+const renderBoards = () => {
+  ui.displayBoard(playerBoard.data, 'playerBoard');
+  ui.displayBoard(computerBoard.data, 'computerBoard');
+};
+
+const computerInit = () => {
+  const { ships: [carrier, battleship, cruiser, submarine, destroyer] } = computerBoard;
+  const predefinedPlacements = [
+    [[carrier, 0, computerBoard.data, 'down'],
+      [battleship, 2, computerBoard.data, 'right'],
+      [cruiser, 7, computerBoard.data, 'down'],
+      [submarine, 41, computerBoard.data, 'right'],
+      [destroyer, 70, computerBoard.data, 'right'],
+    ],
+    [[carrier, 0, computerBoard.data, 'down'],
+      [battleship, 2, computerBoard.data, 'down'],
+      [cruiser, 3, computerBoard.data, 'down'],
+      [submarine, 4, computerBoard.data, 'down'],
+      [destroyer, 5, computerBoard.data, 'down'],
+    ],
+    [[carrier, 9, computerBoard.data, 'down'],
+      [battleship, 2, computerBoard.data, 'right'],
+      [cruiser, 30, computerBoard.data, 'down'],
+      [submarine, 44, computerBoard.data, 'right'],
+      [destroyer, 55, computerBoard.data, 'down'],
+    ],
+
+  ];
+  const randomPlacement = Math.floor(Math.random() * 3);
+  predefinedPlacements[randomPlacement].forEach(placement => {
+    computerBoard.placeShip(...placement);
+    ui.displayBoard(computerBoard.data, 'computerBoard');
   });
- 
+};
+
+document.getElementById('submit').addEventListener('click', () => {
+  const { ship, position, direction } = ui.getPlacement();
+  const selectedShip = playerBoard.ships.filter(sh => sh.cha === ship);
+  const message = playerBoard.placeShip(selectedShip[0], parseInt(position),
+    playerBoard.data, direction);
+
+  ui.displayBoard(playerBoard.data, 'playerBoard');
+  ui.showMessage(message);
+
+  let markup = '<ol>';
+  playerBoard.placedShips.forEach(e => {
+    markup += `<li>${playerBoard.shipName(e)}</li>`;
+  });
+  markup += '</ol>';
+  document.getElementById('mid-section').innerHTML = markup;
+});
+const computerAttack = () => {
+  const computerHits = [];
+  let position = Math.floor(Math.random() * 100);
+  if (computerHits.includes(position)) {
+    while (computerHits.includes(position)) {
+      position = Math.floor(Math.random() * 100);
+    }
+  } else {
+    computer.attack(playerBoard, position, playerBoard.data);
+    ui.displayBoard(playerBoard.data, 'playerBoard');
+    computerHits.push(position);
+    if (playerBoard.allSunk()) {
+      ui.showMessage('Computer WINS');
+      return 0;
+    }
+  }
+};
 
 const playerAttack = () => {
-  for(let i = 0;i<100;i++){
-    document.getElementById(`${i}`).addEventListener('click', ()=>{
-      player.attack(computerBoard, i, computerStorage);
-      if(computerStorage[i] === null){
-        document.getElementById(`${i}`).innerText = 'O';
-      }else if(/X/.test(computerStorage[i])){
-        document.getElementById(`${i}`).innerText = `X`;
-      }else if(/O/.test(computerStorage[i])){
-        document.getElementById(`${i}`).innerText = `O`;
+  for (let i = 0; i < 100; i++) {
+    document.getElementById(`${i}`).addEventListener('click', () => {
+      const result = player.attack(computerBoard, i, computerBoard.data);
+      if (result) {
+        if (computerBoard.data[i] === 'O') {
+          document.getElementById(`${i}`).innerText = 'O';
+        } else if (/X/.test(computerBoard.data[i])) {
+          document.getElementById(`${i}`).innerText = 'X';
+        }
+        if (computerBoard.allSunk()) {
+          ui.showMessage('Player WINS');
+          return 0;
+        }
+        computerAttack();
       }
-      if(computerBoard.allSunk()){
-        ui.showMessage('Player WINS');
-      }
-      computerAttack();
-    })
+    });
   }
-  
 };
- const computerAttack = () => {
-   let position = Math.floor(Math.random() * 100);
-   computer.attack(playerBoard, position, playerStorage);
-   player.showBoard(playerStorage, 'playerBoard');
-   if(playerBoard.allSunk()){
-    ui.showMessage('Computer WINS');
-   }
- }
 
-  document.getElementById('start').addEventListener('click', ()=> {
-    if(playerBoard.placedShips.length < 5){
-        ui.showMessage("finish placing ships");
-    }else{
-  document.getElementById('ship-table-container').setAttribute('class', 'hidden');
-  playerAttack(); 
-    }
-   
+document.getElementById('start').addEventListener('click', () => {
+  if (playerBoard.placedShips.length < 5) {
+    ui.showMessage('finish placing ships');
+  } else {
+    document.getElementById('ship-table-container').setAttribute('class', 'hidden');
+    playerAttack();
+  }
+});
 
-  });
- 
 const init = () => {
-    renderBoards();
+  renderBoards();
   computerInit();
-
 };
 
-  init();
-
-   
+init();

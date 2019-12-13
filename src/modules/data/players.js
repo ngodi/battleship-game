@@ -1,15 +1,10 @@
-import ui from '../ui';
 
-const Player = (name, board, storage) => {
-    const attack = (enemyBoard, position, storage) => {
-        enemyBoard.receiveAttack(position, storage);
-    }
+const Player = (name, board) => {
+  const attack = (enemyBoard, position, data) => enemyBoard.receiveAttack(position, data);
 
-   const showBoard = (boardStorage, boardName) => {
-    ui.displayBoard(boardStorage, boardName);
- }
-
-  return { attack, showBoard, name, board, storage};
+  return {
+    attack, name, board,
   };
-  
-  export default Player
+};
+
+export default Player;
