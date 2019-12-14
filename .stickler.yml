@@ -8,4 +8,3 @@ files:
   ignore:
       - 'dist/*'
       - 'node_modules/*'
-      - eslint --debug --ignore-pattern '!.eslintrc.js'
