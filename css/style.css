@@ -42,3 +42,9 @@ td:active{
     border-radius: 3px;
     padding: 20px;
 }
+.reset{
+    background: red;
+    border: none;
+    border-radius: 3px;
+    padding: 20px;
+}
