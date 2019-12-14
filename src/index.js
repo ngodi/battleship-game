@@ -102,6 +102,9 @@ document.getElementById('start').addEventListener('click', () => {
     ui.showMessage('finish placing ships');
   } else {
     document.getElementById('ship-table-container').setAttribute('class', 'hidden');
+    document.getElementById('start').setAttribute('class', 'hidden');
+    document.getElementById('reset').classList.toggle('hidden');
+
     playerAttack();
   }
 });
