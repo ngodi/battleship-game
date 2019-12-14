@@ -5,6 +5,20 @@
 import ShipFactory from './ship';
 
 const Gameboard = () => {
+  const charToShip = {
+    c: 'carrier', b: 'battleship', cr: 'cruiser', s: 'submarine', d: 'destroyer',
+  };
+  const shipName = ship => charToShip[ship.cha];
+
+  const placedShips = [];
+  const carrier = ShipFactory(5, 'c');
+  const battleship = ShipFactory(4, 'b');
+  const cruiser = ShipFactory(3, 'cr');
+  const submarine = ShipFactory(3, 's');
+  const destroyer = ShipFactory(2, 'd');
+
+  let ships = [carrier, battleship, cruiser, submarine, destroyer];
+
   const findEdge = (position) => {
     const edges = [9, 19, 29, 39, 49, 59, 69, 79, 89, 99];
     for (let i = 0; i < edges.length; i += 1) {
@@ -14,6 +28,7 @@ const Gameboard = () => {
     }
   };
   const data = new Array(100).fill(null);
+
   const validatePlacement = (ship, position, board, direction) => {
     const { len } = ship;
     const edge = findEdge(position);
@@ -37,12 +52,6 @@ const Gameboard = () => {
     }
     return true;
   };
-  const charToShip = {
-    c: 'carrier', b: 'battleship', cr: 'cruiser', s: 'submarine', d: 'destroyer',
-  };
-  const shipName = ship => charToShip[ship.cha];
-
-  const placedShips = [];
 
   const placeShip = (ship, position, board, dir) => {
     const result = validatePlacement(ship, position, board, dir);
@@ -69,13 +78,7 @@ const Gameboard = () => {
     }
     return message;
   };
-  const carrier = ShipFactory(5, 'c');
-  const battleship = ShipFactory(4, 'b');
-  const cruiser = ShipFactory(3, 'cr');
-  const submarine = ShipFactory(3, 's');
-  const destroyer = ShipFactory(2, 'd');
 
-  let ships = [carrier, battleship, cruiser, submarine, destroyer];
   const receiveAttack = (position, board) => {
     let hit = '';
     ships = [carrier, battleship, cruiser, submarine, destroyer];

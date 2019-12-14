@@ -64,21 +64,17 @@ document.getElementById('submit').addEventListener('click', () => {
   document.getElementById('mid-section').innerHTML = markup;
 });
 const computerAttack = () => {
-  const computerHits = [];
-  let position = Math.floor(Math.random() * 100);
-  if (computerHits.includes(position)) {
-    while (computerHits.includes(position)) {
-      position = Math.floor(Math.random() * 100);
-    }
-  } else {
-    computer.attack(playerBoard, position, playerBoard.data);
+  const position = Math.floor(Math.random() * 100);
+  const result = computer.attack(playerBoard, position, playerBoard.data);
+  if (result) {
     ui.displayBoard(playerBoard.data, 'playerBoard');
-    computerHits.push(position);
     if (playerBoard.allSunk()) {
       ui.showMessage('Computer WINS');
       return 0;
     }
+    return 0;
   }
+  computerAttack();
 };
 
 const playerAttack = () => {
