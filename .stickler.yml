@@ -8,4 +8,3 @@ files:
   ignore:
       - 'dist/*'
       - 'node_modules/*'
-      - "--ignore-pattern '!.eslintrc.js' .eslintrc.js"
