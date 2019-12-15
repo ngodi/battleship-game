@@ -7,4 +7,5 @@ linters:
 files:
   ignore:
       - 'dist/*'
+      - 'node_modules/*'
       - 'bower_components/*'
