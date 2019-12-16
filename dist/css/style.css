@@ -1,0 +1,50 @@
+.green{
+   background-color: green;
+}
+td{
+    border: 1px solid gray;
+    width: 20px;
+    height: 20px;
+    border-collapse: collapse;
+    cursor: pointer;
+    text-align: center;
+}
+td:active{
+    transform: scale(0.9);
+}
+
+.boards{
+    display: flex;
+    justify-content: space-evenly;
+}
+.hit{
+    color:yellow;
+    font-weight: bold;
+}
+.miss{
+    color: red;
+    font-weight: bold;
+}
+.hidden{
+    display:none;
+}
+.block{
+    display:block;
+}
+.message-section{
+    margin-top: 80px;
+    color: red;
+}
+
+.start{
+    background: greenyellow;
+    border: none;
+    border-radius: 3px;
+    padding: 20px;
+}
+.reset{
+    background: red;
+    border: none;
+    border-radius: 3px;
+    padding: 20px;
+}

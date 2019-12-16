@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Battleship</title>
+</head>
+<body>
+  <div class="boards">
+     <div class="left-section">
+        <table id="playerBoard"></table>
+          <h3>Player Board</h3>
+          <div id="ship-table-container">
+            <table id="shipTable">
+              <thead>
+                  <tr>
+                    <th>Ship</th><th>Position</th><th>Direction</th><th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td>
+                        <select name="ship" id="ship">
+                          <option value="c">carrier</option>
+                          <option value="b">battleship</option>
+                          <option value="s">submarine</option>
+                          <option value="cr">cruiser</option>
+                          <option value="d">destroyer</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="number" id="position"  min="0" max="99">
+                      </td>
+                      <td>
+                        <select name="direction" id="direction">
+                          <option>down</option>
+                          <option>right</option>
+                        </select>
+                      </td>
+                      <td>
+                          <button id="submit" class="submit">Place</button>
+                      </td>
+                    </tr>
+                </tbody>
+           </table>
+           
+          </div>
+     </div>
+     <div class="mid-section">
+       <h3>Placed Ships</h3>
+       <div  id="mid-section">
+
+       </div>
+       <div class="message-section" id="message-section">
+
+      </div>
+      <button id="start" class="start">start game</button>
+      <button onClick="window.location.reload();" id="reset" class="reset hidden">restart game</button>
+     </div>
+     <div class="right-section">
+        <table id="computerBoard">
+            
+          </table>
+          <h3>Computer Board</h3>
+     </div>
+  </div>
+  
+   <script src="./main.js"></script>
+</body>
+</html>
