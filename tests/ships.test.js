@@ -14,3 +14,9 @@ test('returns true if ship is sunk', () => {
   }
   expect(carrier.isSunk()).toBe(true);
 });
+
+test('sets "X" to ship hitPos index if hit', () => {
+  const carrier = ShipFactory(5, 'c');
+  carrier.hit(2);
+  expect(carrier.hitPos[2]).toBe('X');
+});

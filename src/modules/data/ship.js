@@ -6,7 +6,7 @@ const ShipFactory = (len, cha) => {
   const isSunk = () => hitPos.every(e => e === 'X');
 
   return {
-    len, isSunk, hit, cha,
+    len, isSunk, hit, cha, hitPos,
   };
 };
 
