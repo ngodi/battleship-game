@@ -1,8 +1,21 @@
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+.mid-section{
+    border-bottom: 2px solid lightseagreen;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    height: 20vh;
+}
+
 .green{
    background-color: green;
 }
 td{
-    border: 1px solid gray;
+    background: cornsilk;
     width: 20px;
     height: 20px;
     border-collapse: collapse;
@@ -14,8 +27,19 @@ td:active{
 }
 
 .boards{
+    height: 60vh;
     display: flex;
     justify-content: space-evenly;
+    padding-top: 50px;
+    background-image: url(https://images.pexels.com/photos/988526/pexels-photo-988526.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 5px 5px 15px 5px yellow;
+}
+.computerBoard, .playerBoard{
+ background: linear-gradient(rgba(255, 255, 255, 0.616), rgba(67, 79, 133, 0.692));
 }
 .hit{
     color:yellow;
