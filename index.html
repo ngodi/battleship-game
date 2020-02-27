@@ -8,44 +8,7 @@
   <title>Battleship</title>
 </head>
 <body>
-  <div class="mid-section">
-  <div class="gameInfo">
-    <div class="message-section" id="message-section"> </div>
-      <button id="start" class="start">start game</button>
-     
-  </div>
-  <button onClick="window.location.reload();" id="reset" class="reset hidden">restart game</button>
-    <div class="gameConfig">
-    <div id="shipTable" class="shipTable">
-     <div class="inputFields">
-      <label>Select ship:</label>
-      <select name="ship" id="ship">
-        <option value="c">carrier</option>
-        <option value="b">battleship</option>
-        <option value="s">submarine</option>
-        <option value="cr">cruiser</option>
-        <option value="d">destroyer</option>
-      </select>
-     </div>
-     <div class="inputFields">
-      <label>Set start position:</label>
-      <input type="number" id="position"  min="0" max="99">
-    </div>
-    <div class="inputFields">
-      <label>Set orientation:</label>
-      <select name="direction" id="direction">
-        <option>down</option>
-        <option>right</option>
-      </select>
-    </div>
-        <button id="submit" class="submit">Place</button>
-        <div class="shipsList">
-          <h3>Placed Ships</h3>
-          <div  id="mid-section"> </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="heading">BATTLESHIP</div>
   <div class="boards">
      <div class="left-section">
         <table class="playerBoard" id="playerBoard"></table>
@@ -60,7 +23,52 @@
           <h3>Computer Board</h3>
      </div>
   </div>
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="mid-section">
+        <div class="gameConfig">
+        <div id="shipTable" class="shipTable">
+         <div class="inputFields">
+          <label>Select ship:</label>
+          <select name="ship" id="ship">
+            <option value="c">carrier</option>
+            <option value="b">battleship</option>
+            <option value="s">submarine</option>
+            <option value="cr">cruiser</option>
+            <option value="d">destroyer</option>
+          </select>
+         </div>
+         <div class="inputFields">
+          <label>Set start position:</label>
+          <input type="number" id="position"  min="0" max="99">
+        </div>
+        <div class="inputFields">
+          <label>Set orientation:</label>
+          <select name="direction" id="direction">
+            <option>down</option>
+            <option>right</option>
+          </select>
+        </div>
+            <button id="submit" class="submit">Place</button>
+            <div class="shipsList">
+              <h3>Placed Ships</h3>
+              <div  id="mid-section"> </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gameInfo">    
+            <button id="start" class="start">start game</button>      
+        </div>
+        <div class="message-section" id="message-section"> </div>   
+        <button onClick="window.location.reload();" id="reset" class="reset hidden">restart game</button>
+      </div>
+
+  </div>
   
+  <div id="main">
+    <button class="openbtn" >&#9776; Game setting</button> 
+  </div>
    <script src="./main.js"></script>
 </body>
 </html>
