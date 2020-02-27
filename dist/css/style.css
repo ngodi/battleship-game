@@ -103,9 +103,9 @@ body{
     transition: 0.5s;
   }
   .footer{
-      margin-top:100px;
-      width:100%;
-      height:200px;
+      margin-top:150px;
+      padding: 60px;
+      line-height: 40px;
       background: black;
       color: yellowgreen;
       font-family:var(--main-heading);
