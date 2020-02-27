@@ -8,9 +8,9 @@
   <link href="https://fonts.googleapis.com/css?family=Changa|Press+Start+2P&display=swap" rel="stylesheet">
   <title>Battleship</title>
 </head>
-<body>
+<body class="flex-col">
   <div class="heading">BATTLESHIP</div>
-  <div class="boards">
+  <div class="boards flex-row space-evenly centered-items">
      <div class="left-section">
         <table class="playerBoard" id="playerBoard"></table>
           <div id="ship-table-container">
@@ -29,9 +29,9 @@
     <div class="mid-section">
         <div class="gameConfig">
         <div id="shipTable" class="shipTable">
-         <div class="inputFields">
-          <label>Select ship:</label>
-          <select name="ship" id="ship">
+         <div class="inputFields flex-row space-between">
+          <label>Ship:</label>
+          <select style="width:80px" name="ship" id="ship">
             <option value="c">carrier</option>
             <option value="b">battleship</option>
             <option value="s">submarine</option>
@@ -39,13 +39,13 @@
             <option value="d">destroyer</option>
           </select>
          </div>
-         <div class="inputFields">
-          <label>Set start position:</label>
-          <input type="number" id="position"  min="0" max="99">
+         <div class="inputFields flex-row space-between">
+          <label>Position:</label>
+          <input style="width:75px" placeholder="position" type="number" id="position"  min="0" max="99">
         </div>
-        <div class="inputFields">
-          <label>Set orientation:</label>
-          <select name="direction" id="direction">
+        <div class="inputFields flex-row space-between">
+          <label>Orientation:</label>
+          <select style="width:80px" name="direction" id="direction">
             <option>down</option>
             <option>right</option>
           </select>

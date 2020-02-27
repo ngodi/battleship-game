@@ -9,9 +9,28 @@
     --main-heading:'Press Start 2P'; 
     --sub-heading: 'Changa';
   }
-body{
+
+/* FLEX LAYOUTS */
+.flex-col{
     display: flex;
     flex-direction: column;
+}
+.flex-row{
+    display: flex;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.space-evenly{
+    justify-content: space-evenly;
+}
+.centered-items{
+    align-items:center;
+}
+/* MAIN CONTAINERS */
+body{
     margin: 20px;
     font-family: var(--sub-heading);
     background-image: url(https://images.pexels.com/photos/988526/pexels-photo-988526.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
@@ -32,7 +51,6 @@ body{
 .shipTable{
     width: 95%;
     margin: 5px auto;
-    height: 250px;
     border: 1px dotted black;
     padding: 5px;
     border-radius: 5px;
@@ -40,19 +58,54 @@ body{
     color: wheat;
 }
 
-.inputFields{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
+.boards{
+    height: 40vh;
+    padding-top: 50px;
 }
+.right-section, .left-section{
+    padding: 40px;
+    border-radius: 30%;
+    border: 1px solid white;
+    background: rgba(0, 0, 0, 0.39);
+    color: lightgreen;
+    text-align: center;
+    font-family: var(--sub-heading);
+    animation-name: seawave;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
+.message-section{
+    margin-top: 10px;
+    color:red;
+    text-decoration: blink;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.sidebar {
+    height: 100%; 
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background-color: rgba(17, 17, 17, 0.411);
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s;
+  }
+/* SUB COMPONENTS */
 .submit{
   width: 100%;
   border-radius: 5px;
   cursor: pointer;
   padding: 5px;
 }
-
+.inputFields{
+    width: 100%;
+    margin: 5px 0;
+}
 .shipsList{
     padding: 10px;
 }
@@ -80,39 +133,9 @@ td:active{
     transform: scale(0.9);
 }
 
-.boards{
-    height: 40vh;
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 50px;
-    align-items: center;
-}
 .computerBoard, .playerBoard{
  background: linear-gradient(rgba(255, 255, 255, 0.616), rgba(67, 79, 133, 0.692));
 }
-.right-section, .left-section{
-    padding: 40px;
-    border-radius: 30%;
-    border: 1px solid white;
-    background: rgba(0, 0, 0, 0.39);
-    color: lightgreen;
-    text-align: center;
-    font-family: var(--sub-heading);
-    animation-name: seawave;
-    animation-duration: 15s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes seawave {
-
-    10%{transform: translateY(10px);}
-    20% {transform: translateY(-2px);}
-    30%{transform: translateY(2px); }
-    40% {transform: translateY(-2px);}
-    50%{transform: translateY(2px);}
-    60% {transform: translateY(-10px);}
-
-     }
 
 .hit{
     color:yellow;
@@ -128,14 +151,7 @@ td:active{
 .block{
     display:block;
 }
-.message-section{
-    margin-top: 10px;
-    color:red;
-    text-decoration: blink;
-    text-align: center;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+
 
 .start{
     background:skyblue;
@@ -153,20 +169,6 @@ td:active{
     padding: 20px;
     width: 100%;
 }
-
-.sidebar {
-    height: 100%; 
-    width: 0; 
-    position: fixed; 
-    z-index: 1; 
-    top: 0;
-    left: 0;
-    background-color: rgba(17, 17, 17, 0.411);
-    overflow-x: hidden; 
-    padding-top: 60px; 
-    transition: 0.5s;
-  }
-
   .sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -217,6 +219,7 @@ td:active{
     padding: 20px;
   }
   
+  /* MEDIA QUERIES */
   @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
@@ -235,3 +238,26 @@ td:active{
         margin-top: 30px;
     }
   }
+  /* ANIMATIONS */
+
+@keyframes seawave {
+
+    10%{transform: translateY(10px);}
+    20% {transform: translateY(-2px);}
+    30%{transform: translateY(2px); }
+    40% {transform: translateY(-2px);}
+    50%{transform: translateY(2px);}
+    60% {transform: translateY(-10px);}
+
+     }
+
+     @keyframes seawave {
+
+        10%{transform: translateY(10px);}
+        20% {transform: translateY(-2px);}
+        30%{transform: translateY(2px); }
+        40% {transform: translateY(-2px);}
+        50%{transform: translateY(2px);}
+        60% {transform: translateY(-10px);}
+    
+    }

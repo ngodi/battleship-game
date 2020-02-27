@@ -74,7 +74,7 @@ const computerAttack = () => {
     }
     return 0;
   }
-  setTimeout(computerAttack, 2000);
+  setTimeout(computerAttack, 1000);
 };
 
 const playerAttack = () => {
@@ -91,7 +91,7 @@ const playerAttack = () => {
           ui.showMessage('Player WINS');
           return 0;
         }
-        setTimeout(computerAttack, 2000);
+        setTimeout(computerAttack, 1000);
       }
     });
   }
@@ -99,8 +99,8 @@ const playerAttack = () => {
 
   /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
   function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("mySidebar").style.width = "200px";
+    document.getElementById("main").style.marginLeft = "200px";
   }
   
   /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
