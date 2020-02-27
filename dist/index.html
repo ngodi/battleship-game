@@ -8,10 +8,10 @@
   <link href="https://fonts.googleapis.com/css?family=Changa|Press+Start+2P&display=swap" rel="stylesheet">
   <title>Battleship</title>
 </head>
-<body class="flex-col">
+<body>
   <div class="heading">BATTLESHIP</div>
   <div class="boards flex-row space-evenly centered-items">
-     <div class="left-section">
+     <div class="left-section ship-container">
         <table class="playerBoard" id="playerBoard"></table>
           <div id="ship-table-container">
             <h3>Player Board</h3>
@@ -19,7 +19,7 @@
           </div>
      </div>
  
-     <div class="right-section">
+     <div class="right-section ship-container">
         <table class="computerBoard" id="computerBoard"> </table>
           <h3>Computer Board</h3>
      </div>
@@ -69,6 +69,15 @@
   
   <div id="main">
     <button class="openbtn" >&#9776;Control Panel</button> 
+  </div>
+  <div class="footer">
+    <h3>BATTLESHIP</h3>
+    <p>Designed by Ngodi Albert</p>
+    <p>Battleship is played by the User against the Computer</p>
+    <ol>
+      <li>The game starts by the User clicking on the control panel button</li>
+      <li>The User positions his ships</li>
+    </ol>
   </div>
    <script src="./main.js"></script>
 </body>
