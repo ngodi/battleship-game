@@ -56,11 +56,11 @@ document.getElementById('submit').addEventListener('click', () => {
   ui.displayBoard(playerBoard.data, 'playerBoard');
   ui.showMessage(message);
 
-  let markup = '<ol>';
+  let markup = '<div>';
   playerBoard.placedShips.forEach(e => {
-    markup += `<li>${playerBoard.shipName(e)}</li>`;
+    markup += `<p>${playerBoard.shipName(e)}</p>`;
   });
-  markup += '</ol>';
+  markup += '</div>';
   document.getElementById('mid-section').innerHTML = markup;
 });
 const computerAttack = () => {
@@ -101,7 +101,6 @@ document.getElementById('start').addEventListener('click', () => {
   if (playerBoard.placedShips.length < 5) {
     ui.showMessage('finish placing ships');
   } else {
-    document.getElementById('ship-table-container').setAttribute('class', 'hidden');
     document.getElementById('start').setAttribute('class', 'hidden');
     document.getElementById('reset').classList.toggle('hidden');
 
