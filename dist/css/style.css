@@ -21,8 +21,13 @@ body{
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    background: linear-gradient(to right, rgba(238, 206, 28, 0.582), rgba(221, 11, 11, 0.644));   
+    background-image:url(https://cf.geekdo-images.com/opengraph/img/NyYYF_C9qFop_2YBVRu0rHiraMU=/fit-in/1200x630/pic2439783.png) ;   
     box-shadow: 5px 5px 2px lightgray;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
     align-items: center;
     height: 270px;
  
@@ -43,7 +48,7 @@ body{
     border: 1px dotted black;
     padding: 5px;
     border-radius: 5px;
-    background: slateblue;
+    background: skyblue;
     color: yellow;
     font-family: 'Courier New', Courier, monospace;
     color: black;
@@ -135,7 +140,7 @@ td:active{
 }
 
 .start{
-    background: greenyellow;
+    background:skyblue;
     width: 95%;
     border: none;
     border-radius: 5px;

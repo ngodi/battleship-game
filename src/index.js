@@ -74,7 +74,7 @@ const computerAttack = () => {
     }
     return 0;
   }
-  computerAttack();
+  setTimeout(computerAttack, 2000);
 };
 
 const playerAttack = () => {
@@ -91,7 +91,7 @@ const playerAttack = () => {
           ui.showMessage('Player WINS');
           return 0;
         }
-        computerAttack();
+        setTimeout(computerAttack, 2000);
       }
     });
   }
