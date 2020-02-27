@@ -1,14 +1,19 @@
-
+/* CSS RESET */
 *{
     padding: 0;
     margin: 0;
 }
 
+/* CSS FONTS */
+:root {
+    --main-heading:'Press Start 2P'; 
+    --sub-heading: 'Changa';
+  }
 body{
     display: flex;
     flex-direction: column;
     margin: 20px;
-
+    font-family: var(--sub-heading);
     background-image: url(https://images.pexels.com/photos/988526/pexels-photo-988526.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
     background-attachment: fixed;
     background-position: center;
@@ -27,14 +32,12 @@ body{
 .shipTable{
     width: 95%;
     margin: 5px auto;
-    height: 200px;
+    height: 250px;
     border: 1px dotted black;
     padding: 5px;
     border-radius: 5px;
-    background: skyblue;
-    color: yellow;
-    font-family: 'Courier New', Courier, monospace;
-    color: black;
+    background: rgba(134, 35, 35, 0.699);
+    color: wheat;
 }
 
 .inputFields{
@@ -46,10 +49,21 @@ body{
 .submit{
   width: 100%;
   border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
 }
 
 .shipsList{
-    padding: 5px;
+    padding: 10px;
+}
+
+.shipsList h3{
+    font-family: var(--sub-heading);
+}
+
+.shipsList p{
+    color: white;
+    font-weight: bold;
 }
 .green{
    background-color: green;
@@ -83,26 +97,23 @@ td:active{
     background: rgba(0, 0, 0, 0.39);
     color: lightgreen;
     text-align: center;
+    font-family: var(--sub-heading);
     animation-name: seawave;
     animation-duration: 15s;
     animation-iteration-count: infinite;
 }
 
 @keyframes seawave {
-    10%{
-         transform: translateY(10px);
-    }
-    20% {transform: translateY(-2px);
-    }
-    30%{
-        transform: translateY(2px);
-   }
-   40% {transform: translateY(-2px);}
-   50%{
-    transform: translateY(2px);
-}
-60% {transform: translateY(-10px);}
-  }
+
+    10%{transform: translateY(10px);}
+    20% {transform: translateY(-2px);}
+    30%{transform: translateY(2px); }
+    40% {transform: translateY(-2px);}
+    50%{transform: translateY(2px);}
+    60% {transform: translateY(-10px);}
+
+     }
+
 .hit{
     color:yellow;
     font-weight: bold;
@@ -133,6 +144,7 @@ td:active{
     border-radius: 5px;
     padding: 10px;
     margin: 5px;
+    cursor: pointer;
 }
 .reset{
     background: red;
@@ -142,21 +154,19 @@ td:active{
     width: 100%;
 }
 
-/* The sidebar menu */
 .sidebar {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    height: 100%; 
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
     top: 0;
     left: 0;
-    background-color: rgba(17, 17, 17, 0.411); /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+    background-color: rgba(17, 17, 17, 0.411);
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s;
   }
-  
-  /* The sidebar links */
+
   .sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -165,13 +175,10 @@ td:active{
     display: block;
     transition: 0.3s;
   }
-  
-  /* When you mouse over the navigation links, change their color */
+
   .sidebar a:hover {
     color: #f1f1f1;
   }
-  
-  /* Position and style the close button (top right corner) */
   .sidebar .closebtn {
     position: absolute;
     top: 0;
@@ -182,14 +189,15 @@ td:active{
   .heading{
       text-align: center;
       color: crimson;
+      font-family: var(--main-heading);
       font-size: 80px;
       letter-spacing: 20px;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
   }
-  /* The button used to open the sidebar */
+ 
   .openbtn {
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
     background-color: #111;
     color: white;
@@ -204,13 +212,11 @@ td:active{
     background-color: #444;
   }
   
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
   #main {
-    transition: margin-left .5s; /* If you want a transition effect */
+    transition: margin-left .5s; 
     padding: 20px;
   }
   
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
@@ -225,7 +231,7 @@ td:active{
         margin-top: 50px;
     }
     .heading{
-        font-size: 30px;
+        font-size: 5vw;
         margin-top: 30px;
     }
   }
