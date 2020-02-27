@@ -97,9 +97,28 @@ const playerAttack = () => {
   }
 };
 
+  /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+document.querySelector('.openbtn').addEventListener('click', () => {
+  openNav();
+})
+
+document.querySelector('.closebtn').addEventListener('click', () => {
+  closeNav();
+})
+
 document.getElementById('start').addEventListener('click', () => {
   if (playerBoard.placedShips.length < 5) {
-    ui.showMessage('finish placing ships');
+    ui.showMessage('Please place all ships first');
   } else {
     document.getElementById('start').setAttribute('class', 'hidden');
     document.getElementById('reset').classList.toggle('hidden');
@@ -111,6 +130,7 @@ document.getElementById('start').addEventListener('click', () => {
 const init = () => {
   renderBoards();
   computerInit();
+
 };
 
 init();
