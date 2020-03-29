@@ -17,6 +17,12 @@ Technologies and Tools used
 *   ES6 MODULES
 *   JEST TESTING
 
+Future features
+---------------
+*A counter for each player's number of missed hits
+*A game between 2 users
+*Sound and  visual effects for actions such as hits, miss, sinking, and much more.
+
 [Live Demo](https://battleship-js.netlify.com/)
 
 
