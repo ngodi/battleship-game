@@ -17,9 +17,8 @@ Technologies and Tools used
 *   ES6 MODULES
 *   JEST TESTING
 
-[Live Demo](#)
+[Live Demo](https://battleship-js.netlify.com/)
 
-Coming soon
 
 Installation & Usage
 --------------------
@@ -38,5 +37,7 @@ $npm run test
 
 Author
 ------
-
-[Ngodi Albert](https://github.com/ngodi)
+Ngodi albert
+- Github: [@ngodi](https://github.com/ngodi)
+- Twitter: [@albertngodi](https://twitter.com/albertngodi)
+- Linkedin: [linkedin](https://www.linkedin.com/in/albertngodi/)
